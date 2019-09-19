@@ -1,3 +1,3 @@
-# AlgoCasts
+# Algorithm problem solving
 
-Companion repo to a course on Udemy.com
+Practicing common algorithm problems

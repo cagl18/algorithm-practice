@@ -17,6 +17,53 @@
 //       '### '
 //       '####'
 
-function steps(n) {}
+function steps(n, row = 0, stair = '') {
+  if (n === row) {
+    return;
+  }
+
+  if (n === stair.length) {
+    console.log(stair);
+    return steps(n, row + 1); //new row, start with an empty string
+  }
+
+  if (stair.length <= row) {
+    stair += '#';
+  } else {
+    stair += ' ';
+  }
+  return steps(n, row, stair);
+}
+
+// function steps(n) {
+//   for (let row = 0; row < n; row++) {
+//     let stair = '';
+
+//     for (let column = 0; column < n; column++) {
+//       if (column <= row) {
+//         stair += '#';
+//       } else {
+//         stair += ' ';
+//       }
+//     }
+//     console.log(stair);
+//   }
+// }
+
+// function steps(n) {
+//   //loop from 1 to n.lenght print, for each index, add '#' to variable.
+//   //loop from i+1 to n.length print spaces.
+
+//   let step = [];
+
+//   for (let j = 0; j < n; j++) {
+//     step[j] = ' ';
+//   }
+
+//   for (let i = 0; i < n; i++) {
+//     step[i] = '#';
+//     console.log(step.join(''));
+//   }
+// }
 
 module.exports = steps;
