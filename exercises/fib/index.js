@@ -12,13 +12,39 @@
 //   fib(6) === 8
 
 // instructor solutions
-function fib(n) {
+
+function memoize(fn) {
+  const cache = {};
+  return function(...args) {
+    if (cache[args]) {
+      return cache[args];
+    }
+    const result = fn.apply(this, args);
+    cache[args] = result;
+    return cache[args];
+  };
+}
+
+function slowFib(n) {
+  //memoize function
   if (n < 2) {
     return n;
   }
 
   return fib(n - 1) + fib(n - 2);
 }
+
+const fib = memoize(slowFib);
+
+// ===================================
+
+// function fib(n, memo = []) {
+//   if (n < 2) {
+//     return n;
+//   }
+
+//   return fib(n - 1) + fib(n - 2);
+// }
 
 // function fib(n) {
 //   const result = [0, 1];
@@ -32,19 +58,21 @@ function fib(n) {
 
 // my solutions
 
-// function fib(n, array = [1, 1]) {
-//   // Dymanic: storing the value of previouly computed fib() into an array
-//   // Time complexity guess : O(n log n), space complexity: O(N^2 log(n))  ????
+// function fib(n, memo = []) {
+//   //   // Dymanic: storing the value of previouly computed fib() into an array
+//   //   // Time complexity guess : O(2N), space complexity: O(N))  ????
 
-//   if (n <= 2) {
-//     return 1;
-//   } else if (array.length >= n) {
-//     return array[n - 1];
-//   } else {
-//     let nextIndex = array.length;
-//     array[nextIndex] = array[nextIndex - 1] + array[nextIndex - 2];
-//     return fib(n - 1, array) + fib(n - 2, array);
+//   if (n < 2) {
+//     return n;
 //   }
+
+//   if (memo[n] > 0) {
+//     return memo[n];
+//   }
+
+//   const result = fib(n - 1, memo) + fib(n - 2, memo);
+//   memo[n] = result;
+//   return result;
 // }
 
 // function fib(n) {
