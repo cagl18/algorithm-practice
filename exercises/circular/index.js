@@ -12,6 +12,50 @@
 //   c.next = b;
 //   circular(l) // true
 
-function circular(list) {}
+//instructor solution
+
+function circular(list) {
+  // have to pointer slow and fast. Incremenet slow by 1 and fast by 2.
+  // until either slow === fast or fast.next || fast.next.next === null
+
+  let slow = list.head;
+  let fast = list.getFirst();
+
+  if (!list.head) {
+    return false;
+  }
+
+  while (fast.next && fast.next.next) {
+    slow = slow.next;
+    fast = fast.next.next;
+    if (slow === fast) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+// function circular(list) {
+//   // have to pointer slow and fast. Incremenet slow by 1 and fast by 2.
+//   // until either slow === fast or fast.next || fast.next.next === null
+
+//   let slow = list.head;
+//   let fast = list.getFirst();
+
+//   if (!list.head) {
+//     return false;
+//   }
+
+//   while (slow !== fast || (fast.next !== null || fast.next.next !== null)) {
+//     slow = slow.next;
+//     fast = fast.next.next || null;
+//     if (slow === fast) {
+//       return true;
+//     } else if (fast.next === null || fast.next.next === null) {
+//       return false;
+//     }
+//   }
+// }
 
 module.exports = circular;
