@@ -18,7 +18,24 @@
 // What if nums1's size is small compared to nums2's size? Which algorithm is better?
 // What if elements of nums2 are stored on disk, and the memory is limited such that you cannot load all elements into the memory at once?
 
-//solution 1: using hash map. Time complexity O(a)+O(b). Space complexity O(a) ??
+//solution 1:
+
+var intersect = function(nums1, nums2) {
+  let obj = {},
+    res = [];
+  for (let n of nums1) {
+    obj[n] = obj[n] ? obj[n] + 1 : 1;
+  }
+  for (let n of nums2) {
+    if (obj[n]) {
+      res.push(n);
+      obj[n]--;
+    }
+  }
+  return res;
+};
+
+//solution 2: using hash map. Time complexity O(a)+O(b). Space complexity O(a) ??
 
 /**
  * @param {number[]} nums1

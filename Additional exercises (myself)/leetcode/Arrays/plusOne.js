@@ -15,10 +15,23 @@
 // Output: [4,3,2,2]
 // Explanation: The array represents the integer 4321.
 
+//Solution 1:
+
 /**
  * @param {number[]} digits
  * @return {number[]}
  */
+var plusOne = function(digits) {
+  for (var i = digits.length - 1; i >= 0; i--) {
+    if (++digits[i] > 9) digits[i] = 0;
+    else return digits;
+  }
+
+  return [1, ...digits];
+};
+
+//solution 2:
+
 var plusOne = function(digits) {
   for (let i = digits.length - 1; i >= 0; i--) {
     if (digits[i] < 9) {

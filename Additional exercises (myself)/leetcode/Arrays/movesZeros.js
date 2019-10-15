@@ -9,13 +9,21 @@
 // You must do this in-place without making a copy of the array.
 // Minimize the total number of operations.
 
-/**
- * @param {number[]} nums
- * @return {void} Do not return anything, modify nums in-place instead. Time Complexity O(N). Space complexity O(1)
- */
+//Solution 1:
+var moveZeroes = function(nums) {
+  var counter = 0;
+  for (i = 0; i < nums.length; i++) {
+    if (nums[i] === 0) {
+      nums.splice(i, 1);
+      nums.push(0);
+      counter++;
+      if (counter === nums.length) break;
+      i -= 1;
+    }
+  }
+};
 
-//Solution 1: Time Complexity O(n)   . Space Complexity: O(1).
-
+//Solution 2: Time Complexity O(n)   . Space Complexity: O(1).
 var moveZeroes = function(nums) {
   let stoper = 'S',
     i;
@@ -36,8 +44,7 @@ var moveZeroes = function(nums) {
   return nums;
 };
 
-//Solution 2: Time Complexity O(n)   . Space Complexity: O(1).
-
+//Solution 3: Time Complexity O(n)   . Space Complexity: O(1).
 var moveZeroes = function(nums) {
   for (let i = nums.length - 1; i >= 0; i--) {
     if (nums[i] === 0) {

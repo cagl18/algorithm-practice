@@ -6,11 +6,13 @@ var isValidSudoku = function(board) {
   for (let i = 0; i < board.length; i++) {
     for (let j = 0; j < board.length; j++) {
       let char = board[i][j];
-      const inRow = `${char} in row ${i}`;
-      const inCol = `${char} in col ${j}`;
-      const inBlock = `${char} in ${Math.floor(i / 3)} - ${Math.floor(j / 3)}`;
 
       if (char !== '.') {
+        const inRow = `${char} in row ${i}`;
+        const inCol = `${char} in col ${j}`;
+        const inBlock = `${char} in ${Math.floor(i / 3)} - ${Math.floor(
+          j / 3
+        )}`;
         if (set.has(inRow) || set.has(inCol) || set.has(inBlock)) {
           return false;
         }
